@@ -15,7 +15,11 @@ Output: 2
 ++++++++++++++++++++++++++++
 Breakdown:
 Traverse the array, window by window. Whenever 0 is encountered, the count resets.
-
+++++++++++++++++++++++++++++
+Key Takeaways:
+- Arrays can only be initialized with curly braces on definition. After which, it is immutable 
+    - See:https://stackoverflow.com/questions/22807427/cannot-convert-brace-enclosed-initializer-list
+- Too Much Time Spent
 */
 
 int findMaxConsecutiveOnes(int* nums, int numsSize) {
@@ -34,5 +38,3 @@ int findMaxConsecutiveOnes(int* nums, int numsSize) {
     }
     return streak;
 }
-
-
