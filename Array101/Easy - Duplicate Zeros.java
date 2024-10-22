@@ -23,6 +23,8 @@ Traverse the array, from the back (reverse). Once a zero is detected, check from
 ++++++++++++++++++++++++++++
 Key Takeaways:
 - Arrays in Java, along with array.length() function, for loops in Java
+- Alternative Solution:
+  - Copy the Source to Destination >> Count the number of out-of-arrays due to the duplicate of 0 >> append last number to the end of the array, pull the rest to the back too. If the number to append is 0, duplicate it.
 - Too Much Time Spent
 */
 
