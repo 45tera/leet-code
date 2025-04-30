@@ -48,7 +48,8 @@ Breakdown:
 1. 
 ++++++++++++++++++++++++++++
 Key Takeaways:
--  toCharArray() usage
+- toCharArray() usage
+- Reading from the back
 
  */
 
@@ -102,6 +103,53 @@ class Solution {
             
         }
         return count;
+
+        //Method 2 - Map version 5ms
+        public static int romanToInt(String s) {
+            char[] romans = s.toCharArray();
+    
+            
+            Map<Character,Integer> m = new HashMap<>();
+            
+            m.put('I',1);
+            m.put('V',5);
+            m.put('X',10);
+            m.put('L',50);
+            m.put('C',100);
+            m.put('D',500);
+            m.put('M',1000);
+            
+            
+            int count =0;
+            
+            for (int i = romans.length-1 ; i>=0; i--){
+                
+                char selected = romans[i];
+                
+    
+                if (i-1 <0 ){
+                    count+= m.get(selected);
+                    break;
+                }
+    
+                char chBehind = romans[i-1];
+                
+                
+                if (m.get(chBehind) < m.get(selected)){
+                    count += m.get(selected) - m.get(chBehind);
+                    i--;
+                
+                }
+                else{
+                    count+= m.get(selected);
+                
+                }
+                
+                
+            }
+    
+            return count;
+        }
     }
 
     public int switchRoman(char a){
