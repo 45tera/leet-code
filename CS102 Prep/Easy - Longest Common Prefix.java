@@ -27,15 +27,29 @@ Breakdown:
 1. 
 ++++++++++++++++++++++++++++
 Key Takeaways:
-- toCharArray() usage
-- Reading from the back
-
+- 
  */
+
 class Solution {
+    
+    public String longestCommonPrefix(String[] strs) {
+        char[] lastInList = strs[strs.length-1].toCharArray();
 
-    public String isPalindrome(String[] strs) {
-        e
-        return null;
+        String compare = "";
+
+        for (int i = 0; i < lastInList.length; i++) {
+            compare += lastInList[i];
+            
+            for (int idx = 0; idx < strs.length; idx++) {
+                char cArr = strs[idx].toCharArray();
+                if (!strs[idx].contains(compare) && cArr[i].equals(compare)){
+                    return compare.substring(0,compare.length()-1);
+                }
+                
+            }
+            
+        }
+
+        return compare.substring(0,compare.length()-1);
     }
-
 }
