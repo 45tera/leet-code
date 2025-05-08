@@ -30,26 +30,37 @@ Key Takeaways:
 - 
  */
 
+import java.util.*;
+
 class Solution {
     
-    public String longestCommonPrefix(String[] strs) {
-        char[] lastInList = strs[strs.length-1].toCharArray();
+    public String longestCommonPrefix(String[] strs){
+        String shortestWord = strs[0];
+        ArrayList<String> m = new ArrayList<>();
 
-        String compare = "";
+        for (String s: strs){
+            m.add(s);
+            if(s.length() < shortestWord.length()){
+                shortestWord = s;
+                m.remove(s);
+            }
+        }
+        
+        
+        String compare ="";
+        char[] cArr = shortestWord.toCharArray();
 
-        for (int i = 0; i < lastInList.length; i++) {
-            compare += lastInList[i];
+        
+        
+        for (int i =0; i < cArr.length ; i++){
+            compare+= cArr[i];
             
-            for (int idx = 0; idx < strs.length; idx++) {
-                char cArr = strs[idx].toCharArray();
-                if (!strs[idx].contains(compare) && cArr[i].equals(compare)){
-                    return compare.substring(0,compare.length()-1);
-                }
+            for (int x = 0; x < m.size(); x++){
                 
             }
             
         }
-
+        
         return compare.substring(0,compare.length()-1);
     }
 }
