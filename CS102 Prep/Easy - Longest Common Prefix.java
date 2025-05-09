@@ -35,32 +35,48 @@ import java.util.*;
 class Solution {
     
     public String longestCommonPrefix(String[] strs){
+        if (strs.length <= 1){
+            return "";
+        }
+
         String shortestWord = strs[0];
         ArrayList<String> m = new ArrayList<>();
 
         for (String s: strs){
             m.add(s);
-            if(s.length() < shortestWord.length()){
+            if(s.length() <= shortestWord.length()){
                 shortestWord = s;
-                m.remove(s);
             }
         }
         
-        
+        m.remove(shortestWord);
+
+    
         String compare ="";
         char[] cArr = shortestWord.toCharArray();
 
         
-        
+        //look into each character of the shortest word, create window to compare
         for (int i =0; i < cArr.length ; i++){
             compare+= cArr[i];
             
+            // 
             for (int x = 0; x < m.size(); x++){
-                
+                          
+               if(!m.get(x).contains(compare)){
+                 
+                   if (compare.length() >2){
+                       return compare.substring(0,compare.length()-1);
+                   }
+                   else{
+                       return "";
+                   }
+               } 
             }
             
         }
         
-        return compare.substring(0,compare.length()-1);
+        return "";
     }
+
 }
