@@ -30,53 +30,73 @@ Key Takeaways:
 - 
  */
 
-import java.util.*;
-
 class Solution {
     
-    public String longestCommonPrefix(String[] strs){
-        if (strs.length <= 1){
+    //0ms
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
             return "";
         }
-
-        String shortestWord = strs[0];
-        ArrayList<String> m = new ArrayList<>();
-
-        for (String s: strs){
-            m.add(s);
-            if(s.length() <= shortestWord.length()){
-                shortestWord = s;
+        
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) {
+                    return "";
+                }
             }
         }
         
-        m.remove(shortestWord);
+        return prefix;
+    }
+    
+
+    // public String longestCommonPrefix(String[] strs){
+    //     if (strs.length <= 1){
+    //         return "";
+    //     }
+
+    //     String shortestWord = strs[0];
+    //     ArrayList<String> m = new ArrayList<>();
+
+    //     for (String s: strs){
+    //         m.add(s);
+    //         if(s.length() <= shortestWord.length()){
+    //             shortestWord = s;
+    //         }
+    //     }
+        
+    //     m.remove(shortestWord);
+
+    //     m.get(m.indexOf(""));
 
     
-        String compare ="";
-        char[] cArr = shortestWord.toCharArray();
+    //     String compare ="";
+    //     char[] cArr = shortestWord.toCharArray();
 
         
-        //look into each character of the shortest word, create window to compare
-        for (int i =0; i < cArr.length ; i++){
-            compare+= cArr[i];
+    //     //look into each character of the shortest word, create window to compare
+    //     for (int i =0; i < cArr.length ; i++){
+    //         compare+= cArr[i];
             
-            // 
-            for (int x = 0; x < m.size(); x++){
+    //         // 
+    //         for (int x = 0; x < m.size(); x++){
                           
-               if(!m.get(x).contains(compare)){
+    //            if(!m.get(x).contains(compare)){
                  
-                   if (compare.length() >2){
-                       return compare.substring(0,compare.length()-1);
-                   }
-                   else{
-                       return "";
-                   }
-               } 
-            }
+    //                if (compare.length() >2){
+    //                    return compare.substring(0,compare.length()-1);
+    //                }
+    //                else{
+    //                    return "";
+    //                }
+    //            } 
+    //         }
             
-        }
+    //     }
         
-        return "";
-    }
+    //     return "";
+    // }
 
 }
