@@ -1,3 +1,6 @@
+
+import java.util.HashMap;
+
 /*
 ++++++++++++++++++++++++++++
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -57,6 +60,31 @@ Key Takeaways:
     }
 
     // O(n)
+    // Uses hashmap to map the complement, based on the concept of using the hash collision.
+    public int[] twoSum_On(int[] nums, int target) {
+        HashMap<Integer,Integer> mapList = new HashMap<>();
+        Integer value = null;
+
+        for (int i = 0; i < nums.length; i++) { //Iterating -> O(n)
+            int pointerNumb = nums[i]; //searching - indexing -> O(1)
+            int complement = target - pointerNumb; 
+            
+            if (i == 0){
+               value = mapList.get(complement); //indexing for hashmap -> O(1) 
+            }
+            else{
+                value = mapList.get(pointerNumb);
+            }
+            
+            if (value != null){
+                return new int[]{i, value};
+            }else{
+                mapList.put(complement, i);
+            }
+
+        }
+        return new int[]{};
+    }
 
 
 }
