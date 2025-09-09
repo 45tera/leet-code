@@ -11,6 +11,7 @@ class Solution {
                 int length = q - i;
                 int width;
 
+                // takes whichever that is shorter
                 if (height[q] >= height[i]) {
                     width = height[i];
                 } else {

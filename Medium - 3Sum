@@ -1,0 +1,57 @@
+public class Solution {
+
+
+    //O(n^2) solution, 2pointers
+    public List<List<Integer>> threeSum(int[] nums) {
+
+      
+
+        List<Integer> nums2 = Arrays.stream(nums)   // turn array into IntStream
+                            .boxed()        // box each int → Integer
+                            .collect(Collectors.toList());
+
+
+        List<List<Integer>> output = new ArrayList<>();
+
+        nums2.sort(null);
+
+       
+        for (int i =0; i< nums2.size();i ++){
+            int focus = nums2.get(i);
+            
+            int left = i+1;
+
+            int right = nums2.size()-1;
+
+            while (left < right){
+
+                
+                int sum = focus + nums2.get(left) + nums2.get(right);
+                if (sum < 0){
+                    left++;
+                }
+                else if (sum ==0){
+                    List<Integer> m = new ArrayList<Integer>();
+                    m.add(focus);
+                    m.add(nums2.get(left));
+                    m.add(nums2.get(right));
+
+                    if (!output.contains(m) ){ // very computational expensive :( [sadge]
+                        output.add(m);
+                    }
+                    left++;
+                    right--;
+                    
+                }
+                else if (sum > 0){
+                    right--;
+                }
+            }
+            
+
+        }
+        
+        return output;
+
+    }
+}
