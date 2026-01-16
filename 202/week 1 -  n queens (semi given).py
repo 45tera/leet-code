@@ -5,8 +5,41 @@ import itertools
 
 def conflict(i1, j1, i2, j2):
     return (i1-i2 == j1-j2) or (i1 - i2 == - (j1-j2))
-  
+
 #check conflict horizontally + vertically - solve by generating a pool where the horizontal and vertical dont conflict.
+def n_queen(n):
+    num_ways = 0
+    
+    # used because order matters, not repetition
+    x  = itertools.permutations(range(n)) #index 0 becomes the row 0 queen location 
+
+    # check
+    for cb in x:
+      is_valid_board = True 
+      #for each location, ie. conflict (0, 1,location[0], location[1])
+      for i in range(0,len(cb)):
+        for j in range(i+1, len(cb)):
+          is_threatened = conflict(i,cb[i],j,cb[j])
+          if (is_threatened == True):
+            is_valid_board = False
+            break
+      if is_valid_board:
+        num_ways+=1
+    # i think what went wrong is that the for loop does not count into index 0 and index 2 comparisons??? 
+    return num_ways
+
+if __name__ == '__main__':
+
+    n = 8
+
+    while True:
+        try:
+            if n > 0:
+                break
+        except ValueError:
+            print('try harder!')
+    print('the number of distinct solutions is %d.' % n_queen(n))
+    # n = 8, total solutions == 92
 
 ########################
 # side quest - understanding itertools.combinations()
