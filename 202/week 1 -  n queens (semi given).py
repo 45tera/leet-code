@@ -6,7 +6,7 @@ import itertools
 def conflict(i1, j1, i2, j2):
     return (i1-i2 == j1-j2) or (i1 - i2 == - (j1-j2))
   
-#check conflict horizontally + vertically?
+#check conflict horizontally + vertically - solve by generating a pool where the horizontal and vertical dont conflict.
 
 ########################
 # side quest - understanding itertools.combinations()
@@ -22,8 +22,7 @@ Return r length subsequences of elements from the input iterable.
 
 The output is a subsequence of product() keeping only entries that are subsequences of the iterable. 
 
-// AI assisted help thank heavens:
-
+// AI assisted help thank heavens: product calls upon itertools.product() to create a Cartesian product. It is every possible outcome.
 
 The length of the output is given by math.comb() which computes n! / r! / (n - r)! when 0 ≤ r ≤ n or zero when r > n.
 
@@ -49,18 +48,29 @@ def combinations(iterable, r):
         return  //edge case here as mentioned, cannot R > N
     indices = list(range(r))   
 
-    yield tuple(pool[i] for i in indices)
+    yield tuple(pool[i] for i in indices) // yield is an interesting read, its like a stream version of return, that does not close the return option. 
+    // checkout: https://www.w3schools.com/python/trypython.asp?filename=demo_ref_keyword_yield
+    
     while True:
+
+        // checks the case in which it hits the limit, else return the combination.
         for i in reversed(range(r)):
             if indices[i] != i + n - r:
                 break
         else:
             return
+            
+        // incrementer
         indices[i] += 1
+
+        // reset phase
         for j in range(i+1, r):
             indices[j] = indices[j-1] + 1
         yield tuple(pool[i] for i in indices)
 
+    // tera's comments: its an interesting concept - it has a key of incrementing the last digit by one, then once it hits the limit of i+n-r, then the second last digit is incremented, and the last digit is brought back to its initial state. Truly a cool brute force algorithm.
+
+    // tera's comments: another thing of note is that it seems to not check previously made combinations (ie. AB checked, then it does not check BA, which is time efficient in that way.)
 '''
 
 
