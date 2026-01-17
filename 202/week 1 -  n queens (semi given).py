@@ -105,5 +105,46 @@ def combinations(iterable, r):
 
     // tera's comments: another thing of note is that it seems to not check previously made combinations (ie. AB checked, then it does not check BA, which is time efficient in that way.)
 '''
+########################
+# side quest 2 - better code.
+########################
 
+'''
+// for the check condition of n_queen, the immediate answer i had was wrong, and after correction, the "easiest" way was simply to use this:
+ # check
+ for cb in x:
+  result = False
+ #for each location, ie. conflict (0, 1,location[0], location[1])
+  for i in range(0,len(cb)):
+   for j in range(i+1, len(cb)):
+    result = conflict(i,cb[i],j,cb[j])
+    # breaks the inner loop if the conflict is True
+    if (result == True):
+      break
+   # breaks the outer loop if the conflict is True
+   if (result == True):
+    break
+  # if the chessboard configuration is still False after running through, then add number of ways
+  if (result == False):
+    num_ways+=1
+
+'''
+
+# but a usage of flags! could help; and also a stop case so that we reduce the number of operations on the inner loop
+'''
+  # check
+ for cb in x:
+   is_valid = True   <----- flag usage
+ #for each location, ie. conflict (0, 1,location[0], location[1])
+   for i in range(0,len(cb)):
+    if (is_valid is False):  <----- Stop case here
+      break
+    for j in range(i+1, len(cb)):
+     result = conflict(i,cb[i],j,cb[j])
+     if (result == True):   
+      is_valid = False; <----- global flag usage to break out of the inner loop and signify end 
+      break
+   if is_valid:
+    num_ways+=1
+'''
 
