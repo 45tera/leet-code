@@ -40,3 +40,22 @@ print(ispalindrome_recur("ss")) #i missed this case. need to be careful. thanks 
 print(ispalindrome_recur("sas"))
 print(ispalindrome_recur("sasb"))
 print(ispalindrome_recur("msasm"))
+
+
+# test case by school
+for s in ['geeksforgeeks', 'malayalam', 'aibohphobia']: # False, True, True
+    print(s, 'is', 'a' if isPalindrome(s) else 'not a', 'palindrome')
+
+######################
+# Answer study
+######################
+'''
+def isPalindrome(s):
+    n = len(s)
+    if n <= 1: # base case
+        return True
+    return s[0] == s[n-1] and isPalindrome(s[1:n-1])
+
+'''
+
+# // tera's comments: peak coding - the cases n=1 and n =0 are handled nicely with a simple <= and also checks recursion/prior stack before with the 'and' case.
