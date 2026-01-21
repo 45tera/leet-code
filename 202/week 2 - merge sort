@@ -1,1 +1,18 @@
+def merge_sort(A):
+    # A is a list of numbers
+    # write your own code to implement merge sort with recursion
 
+    if len(A) > 1:
+        mid = len(A) // 2
+        Lhalf = A[:mid]
+        Rhalf = A[mid:]
+        merge_sort(Lhalf)
+        merge_sort(Rhalf)
+        merge(Lhalf,Rhalf,A) #hmm why?
+        
+
+#Merge process
+def merge(Lhalf,Rhalf,A):
+  
+
+#TODO: inplement the recursion process for merge sort
