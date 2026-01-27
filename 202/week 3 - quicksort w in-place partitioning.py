@@ -1,4 +1,3 @@
-
 # Implement function partition with pivot the last element x = A[r]
 # After this function, all elements smaller than or equal to x are on the left side of x,
 # and all elements greater than x are on the right side of x
@@ -10,38 +9,26 @@ def partition(A, p, r):
     # This function should return the index of the pivot
     pivot = A[r]
 
-    i = p-1 #left 
-    j = r-1  #right
-    for x in range(i+1,pivot):
-        print("index")
-        print(x)
-        if x == j:
-            i = x # assign
-            break
+    i = p-1
+    q = r-1
+    #TODO: implement partition
+    for x in range(i+1,pivot): #left pointer
         if A[x] >= pivot:
-            print("a(x)")
-            print(A[x])
-            if A[j] <= pivot:
-                print("a(y)")
-                print(A[j])
-                swap(A,x,j)
-                print(A)
-                j-=1
-                
-    # done with the checking
-    swap(A,i,-1) #swap the last two
-    print("aa?")
-    print(i+1)
-    
-    
+            for j in range(q,x,-1):
+                if A[j] <= pivot:
+                    swap(A,x,j)
+                    q = j
+                    i = x
+                    break
+        
+    print(A)
     return i+1
-            
-def swap(A,a,b): # a and b are indexes
-    A[a], A[b] = A[b], A[a]
-    
-    
 
-arr = [10, 7, 8, 9, 1, 5]
+# swap function
+def swap(A,a,b):
+    A[a], A[b] = A[b], A[a]
+
+#test cases
+arr = [10, 7, 8, 9, 1, 2, 5]
 n = len(arr)
 partition(arr,0,n-1)
-print(arr)
