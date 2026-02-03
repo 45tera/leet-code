@@ -17,8 +17,6 @@ def partition(A, p, r):
        if A[x] < pivot:
            i+=1;
            swap(A,x,i);
-           print("swapped")
-           print(A)
     
     swap(A,r,i+1)   
     return i+1
@@ -27,12 +25,16 @@ def partition(A, p, r):
 def swap(A,a,b):
     A[a], A[b] = A[b], A[a]
 
+def quicksort(arr):
+    n = len(arr)
+    newP = partition(arr,0,n-1)
+    # Left Recur
+    partition(arr,0,newP-1)
+    # Right Recur
+    partition(arr,newP,n-1)
+
 #test cases
 arr = [10, 7, 8, 9, 1, 2, 5]
-n = len(arr)
-newP = partition(arr,0,n-1)
-
-partition(arr,0,newP-1)
 print(arr)
-partition(arr,newP,n-1)
+quicksort(arr)
 print(arr)
