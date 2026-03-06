@@ -1,4 +1,14 @@
 """
+The Problem: Given an array of integers, move all 0's to the end of it while maintaining the relative order of the non-zero elements. You must do this in-place without making a copy of the array.
+
+Example:
+
+Input: [0, 1, 0, 3, 12]
+
+Desired Output: [1, 3, 12, 0, 0]
+"""
+
+"""
 Strategy 1 - Bubble Sort ish
 [1,0,0,3,12] -> swap again [1,0,0,3,12] + check the "safe area 1,0; yeah. 0 is at the end."->  swap again [1,0,3,0,12] + check safe area from the back 1,0,3. swap the 0 and 3. [1,3,0,0,12] -> swap again [1,3,0,12,0] + check safe area from the back 1,3,0,12. swap 0 and 12. [1,3,12,0,0]
 """
