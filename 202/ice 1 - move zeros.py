@@ -36,6 +36,20 @@ Strategy 2 - Swap on find, kinda like insertion sort
 """
 
 def move_zeros_strat2(nums):
+    last_non_zero = -1
+    last_zero = -1
+    for i in range(0, len(nums)):
+        if (nums[i] == 0 and last_zero== -1):
+            last_zero = i 
+        elif (nums[i] != 0):
+            last_non_zero =i
+            if last_zero != -1:
+                nums[last_zero] = nums[i]
+                nums[i] = 0
+                last_zero +=1 #??????
+                
+        
+    return nums
   
 
 """
