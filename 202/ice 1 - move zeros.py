@@ -46,7 +46,7 @@ def move_zeros_strat2(nums):
             if last_zero != -1:
                 nums[last_zero] = nums[i]
                 nums[i] = 0
-                last_zero +=1 #??????
+                last_zero +=1 #assisted. "safe zone+1"
                 
         
     return nums
@@ -55,3 +55,13 @@ def move_zeros_strat2(nums):
 """
 I just realised to add in, there will be amortised doubling on the space. Shucks.
 """
+
+"""
+AI suggested answer is super short. I like it!
+"""
+def move_zeros_AI(nums):
+    i = 0  
+    for j in range(len(nums)):
+        if nums[j] != 0: 
+            nums[i], nums[j] = nums[j], nums[i] 
+            i += 1 
