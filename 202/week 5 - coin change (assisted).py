@@ -42,3 +42,5 @@ def coin_change_unlimited_iter(n):
 
 for e in enumerate(min_coin):
     print(e)
+
+#tera notes: tried to fit a greedy algo into a DP question, remember to stick to the recurrence relation.
