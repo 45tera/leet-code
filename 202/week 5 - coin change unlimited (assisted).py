@@ -31,3 +31,23 @@ for e in enumerate(min_coin):
     print(e)
 
 #tera notes: tried to fit a greedy algo into a DP question, remember to stick to the recurrence relation.
+
+#THIS IS NOT MENTIONED. but uh i wanted to try so 🥴
+denom = [1, 3, 4]
+m = len(denom)
+n = 30
+
+min_coin = [float('inf')] * (n) #initialises an empty array for results of 
+min_coin[0] = 0
+
+def coin_change_unlimited_recur(i):
+    if i == n:
+        return min_coin;
+    for coin in denom:
+        if (coin <= i and i-coin >=0):
+            min_coin[i] = min(min_coin[i],min_coin[i-coin]+1)
+    coin_change_unlimited_recur(i+1)
+
+## to start
+coin_change_unlimited_recur(1)
+    
