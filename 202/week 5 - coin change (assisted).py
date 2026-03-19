@@ -5,6 +5,7 @@
 # suppose there is unlimited supply for each denomination
 # what is the minimum number of coins to make up 30 cents
 # is it 7 4-cents + 2 1-cent => min is 9 coins.
+# the smallest is actually 6*4 + 2*3 => 8 coins
 
 denom = [1, 3, 4]
 m = len(denom)
