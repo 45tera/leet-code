@@ -32,13 +32,37 @@ for e in enumerate(min_coin):
 
 #tera notes: tried to fit a greedy algo into a DP question, remember to stick to the recurrence relation.
 
-#THIS IS NOT MENTIONED. but uh i wanted to try so 🥴
+# RECURSION -  memoisation
 denom = [1, 3, 4]
 m = len(denom)
 n = 30
 
-min_coin = [float('inf')] * (n) #initialises an empty array for results of 
+min_coin = [float('inf')] * (n+1) #initialises an empty array for results of 
 min_coin[0] = 0
+
+def coin_change_unlimited_recur_mem(n):
+    if n == 0:
+        return 0
+
+    # Check index 'n' directly - same goes for any memoisation -> any checks done are a BASE CASE.
+    if min_coin[n] != float('inf'):
+        return min_coin[n]
+        
+    q = float('inf')
+    for i in range(0, len(denom)): #check available coins
+        selected_coin = denom[i]
+        if (selected_coin <= n):
+            q = min(q, 1 + coin_change_unlimited_recur_mem(n - selected_coin))
+    
+    #Record the result at index 'n'
+    min_coin[n] = q
+    
+    #Must return the value it found, so that comparison can happen
+    return q
+
+coin_change_unlimited_recur_mem(n)
+
+#THIS IS NOT MENTIONED. but uh i wanted to try a bottom up approach denom = [1, 3, 4]
 
 def coin_change_unlimited_recur(i):
     if i == n:
