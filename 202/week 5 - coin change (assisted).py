@@ -14,31 +14,17 @@ min_coin = [float('inf')] * (n + 1) #initialises an empty array for results of
 min_coin[0] = 0
 
 # TODO: implement the DP formula in iterative format
-def coin_change_unlimited_iter(n):
-    max_value_coin = -1
-    minimum_coin_count = -1
-    remainder = -1
-    if (min_coin[n-1]):
-        ??
-    
-    for coin_pointer in range(-1,denom):
-        next_coin_value = denom[coin_pointer+1]
-        if next_coin_value <= n:
-            max_value_coin = next_Coin_value
-        else:
-            break
-            
-    while (minimum_coin_count != 0 or):
-        remainder = n % max_value_coin 
+def coin_change_unlimited_iter():
 
-        if (remainder != 0):
-            
-            
-        else:
-            minimum_coin_count = n // max_value_coin
-            
-        
+    for i in range(1,len(min_coin)):
+        for coin in denom:
+            if (coin <= i and i-coin >=0):
+                min_coin[i] = min(min_coin[i],min_coin[i-coin]+1)
+            else:
+                break
     
+    
+coin_change_unlimited_iter()
 
 for e in enumerate(min_coin):
     print(e)
