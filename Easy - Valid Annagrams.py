@@ -36,4 +36,7 @@ class Solution(object):
             return dict1 == dict2 # Collections.counter is better.
         return False
 
+# I think its interesting to think about, cause like is question's solution (or the main use of the dictionary) will be capped at O(N), given that this question is set in English. 
+# If the character inputs allowed for Unicode, our O(N), or O(K), will be the max number of Unicode characters out there, making it more than O(1) if we dont know the exact number lol, but could increase more.
+# However, in the end, O(K) for K distinct characters is still bounded by O(N) because a string of N can only go as much as N. So. O(K) is not very much slower than O(N)
 
