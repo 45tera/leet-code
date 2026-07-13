@@ -29,15 +29,20 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        diffDict = {} #Good. Creation of dictionary.
-        for curr_index in range(len(nums)): # Not good. 
-            curr_number = nums[curr_index]
+        diffDict = {}
+        for curr_index, curr_number in enumerate(nums):
             diff = target - curr_number
             if curr_number in diffDict:
-                result = list((curr_index,diffDict[curr_number]))
-                return result
-            else: # Drop the else - its a guard clause thinking
-                diffDict[diff] = curr_index
+                return [diffDict[curr_number],curr_index]
+            diffDict[diff] = curr_index
                 
 
+# Today's interesting learning was guard clause cases (reduce the mental strain on the increased indentation) + the use of enumerate in python.
+#
+# Also hit on an issue while coding this out - an unhashable type. So turns out that python hashes any data that is trying to do a search/comparison.
+# But only immutable types in python are hashable, which make sense - like if a List was first hashed, and then the user adds in one more value, the hash of the entire List is going to change.
+# So, how do mutable types get hashed?
+#
+
+        
         
