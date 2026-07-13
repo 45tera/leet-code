@@ -40,3 +40,20 @@ class Solution(object):
 # If the character inputs allowed for Unicode, our O(N), or O(K), will be the max number of Unicode characters out there, making it more than O(1) if we dont know the exact number lol, but could increase more.
 # However, in the end, O(K) for K distinct characters is still bounded by O(N) because a string of N can only go as much as N. So. O(K) is not very much slower than O(N)
 
+
+"""
+NeetCode Retry 
+"""
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        
+        dict_1 = {}
+        dict_2 = {}
+        for index in range(len(s)): #doesn matter cus they same 
+            dict_1[s[index]] = dict_1.get(s[index],0) +1
+            dict_2[t[index]] = dict_2.get(t[index],0) +1
+        
+        return dict_1 == dict_2
+        
