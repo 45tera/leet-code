@@ -1,0 +1,19 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        diffDict = {}
+        for curr_index in range(len(nums)):
+            curr_number = nums[curr_index]
+            diff = target - curr_number
+            if curr_number in diffDict:
+                result = list((curr_index,diffDict[curr_number]))
+                return result
+            else:
+                diffDict[diff] = curr_index
+                
+
+        
